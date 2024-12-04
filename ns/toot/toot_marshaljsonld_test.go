@@ -17,45 +17,27 @@ func TestToot_MarshalJSONLD(t *testing.T) {
 	`"@context":{`+
 		`"toot":"http://joinmastodon.org/ns#"`+
 		`,`+
-		`"Curve25519Key":"toot:Curve25519Key"`+
+		`"attributionDomains":"toot:attributionDomains"`+
 		`,`+
-		`"cipherText":"toot:cipherText"`+
-		`,`+
-		`"claim":"toot:claim"`+
-		`,`+
-		`"Device":"toot:Device"`+
-		`,`+
-		`"deviceId":"toot:deviceId"`+
+		`"blurhash":"toot:blurhash"`+
 		`,`+
 		`"discoverable":"toot:discoverable"`+
 		`,`+
-		`"Ed25519Key":"toot:Ed25519Key"`+
-		`,`+
-		`"Ed25519Signature":"toot:Ed25519Signature"`+
-		`,`+
 		`"Emoji":"toot:Emoji"`+
-		`,`+
-		`"EncryptedMessage":"toot:EncryptedMessage"`+
 		`,`+
 		`"featured":"toot:featured"`+
 		`,`+
 		`"featuredTags":"toot:featuredTags"`+
 		`,`+
-		`"fingerprintKey":"toot:fingerprintKey"`+
-		`,`+
 		`"focalPoint":"toot:focalPoint"`+
 		`,`+
-		`"identityKey":"toot:identityKey"`+
+		`"IdentityProof":"toot:IdentityProof"`+
 		`,`+
 		`"indexable":"toot:indexable"`+
 		`,`+
 		`"memorial":"toot:memorial"`+
 		`,`+
-		`"messageFranking":"toot:messageFranking"`+
-		`,`+
-		`"messageType":"toot:messageType"`+
-		`,`+
-		`"publicKeyBase64":"toot:publicKeyBase64"`+
+		`"votersCount":"toot:votersCount"`+
 		`,`+
 		`"suspended":"toot:suspended"`+
 	`}`
@@ -73,33 +55,15 @@ func TestToot_MarshalJSONLD(t *testing.T) {
 
 		{
 			Value: toot.Toot{
-				Curve25519Key: opt.Something("apple banana cherry"),
+				AttributionDomains: opt.Something("apple banana cherry"),
 			},
-			Expected: []byte(`{`+context+`,"Curve25519Key":"apple banana cherry"}`),
+			Expected: []byte(`{`+context+`,"attributionDomains":"apple banana cherry"}`),
 		},
 		{
 			Value: toot.Toot{
-				CipherText: opt.Something("apple banana cherry"),
+				BlurHash: opt.Something("apple banana cherry"),
 			},
-			Expected: []byte(`{`+context+`,"cipherText":"apple banana cherry"}`),
-		},
-		{
-			Value: toot.Toot{
-				Claim: opt.Something("apple banana cherry"),
-			},
-			Expected: []byte(`{`+context+`,"claim":"apple banana cherry"}`),
-		},
-		{
-			Value: toot.Toot{
-				Device: opt.Something("apple banana cherry"),
-			},
-			Expected: []byte(`{`+context+`,"Device":"apple banana cherry"}`),
-		},
-		{
-			Value: toot.Toot{
-				DeviceID: opt.Something("apple banana cherry"),
-			},
-			Expected: []byte(`{`+context+`,"deviceId":"apple banana cherry"}`),
+			Expected: []byte(`{`+context+`,"blurhash":"apple banana cherry"}`),
 		},
 		{
 			Value: toot.Toot{
@@ -115,27 +79,15 @@ func TestToot_MarshalJSONLD(t *testing.T) {
 		},
 		{
 			Value: toot.Toot{
-				Ed25519Key: opt.Something("apple banana cherry"),
-			},
-			Expected: []byte(`{`+context+`,"Ed25519Key":"apple banana cherry"}`),
-		},
-		{
-			Value: toot.Toot{
-				Ed25519Signature: opt.Something("apple banana cherry"),
-			},
-			Expected: []byte(`{`+context+`,"Ed25519Signature":"apple banana cherry"}`),
-		},
-		{
-			Value: toot.Toot{
 				Emoji: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"Emoji":"apple banana cherry"}`),
 		},
 		{
 			Value: toot.Toot{
-				EncryptedMessage: opt.Something("apple banana cherry"),
+				Emoji: opt.Something(""),
 			},
-			Expected: []byte(`{`+context+`,"EncryptedMessage":"apple banana cherry"}`),
+			Expected: []byte(`{`+context+`,"Emoji":""}`),
 		},
 		{
 			Value: toot.Toot{
@@ -157,27 +109,15 @@ func TestToot_MarshalJSONLD(t *testing.T) {
 		},
 		{
 			Value: toot.Toot{
-				FingerPrintKey: opt.Something("apple banana cherry"),
-			},
-			Expected: []byte(`{`+context+`,"fingerprintKey":"apple banana cherry"}`),
-		},
-		{
-			Value: toot.Toot{
-				FingerPrintKey: opt.Something(""),
-			},
-			Expected: []byte(`{`+context+`,"fingerprintKey":""}`),
-		},
-		{
-			Value: toot.Toot{
 				FocalPoint: []any{12,456},
 			},
 			Expected: []byte(`{`+context+`,"focalPoint":[12,456]}`),
 		},
 		{
 			Value: toot.Toot{
-				IdentityKey: opt.Something("apple banana cherry"),
+				IdentityProof: opt.Something("apple banana cherry"),
 			},
-			Expected: []byte(`{`+context+`,"identityKey":"apple banana cherry"}`),
+			Expected: []byte(`{`+context+`,"IdentityProof":"apple banana cherry"}`),
 		},
 		{
 			Value: toot.Toot{
@@ -205,21 +145,9 @@ func TestToot_MarshalJSONLD(t *testing.T) {
 		},
 		{
 			Value: toot.Toot{
-				MessageFranking: opt.Something("apple banana cherry"),
+				VotersCount: opt.Something("apple banana cherry"),
 			},
-			Expected: []byte(`{`+context+`,"messageFranking":"apple banana cherry"}`),
-		},
-		{
-			Value: toot.Toot{
-				MessageType: opt.Something("apple banana cherry"),
-			},
-			Expected: []byte(`{`+context+`,"messageType":"apple banana cherry"}`),
-		},
-		{
-			Value: toot.Toot{
-				PublicKeyBase64: opt.Something("apple banana cherry"),
-			},
-			Expected: []byte(`{`+context+`,"publicKeyBase64":"apple banana cherry"}`),
+			Expected: []byte(`{`+context+`,"votersCount":"apple banana cherry"}`),
 		},
 		{
 			Value: toot.Toot{
@@ -239,12 +167,12 @@ func TestToot_MarshalJSONLD(t *testing.T) {
 		{
 			Value: toot.Toot{
 				Discoverable: opt.Something(false),
-				IdentityKey: opt.Something("apple banana cherry"),
+				Emoji: opt.Something("apple banana cherry"),
 				Indexable: opt.Something(true),
 				Memorial: opt.Something(false),
 				Suspended: opt.Something(false),
 			},
-			Expected: []byte(`{`+context+`,"discoverable":false,"identityKey":"apple banana cherry","indexable":true,"memorial":false,"suspended":false}`),
+			Expected: []byte(`{`+context+`,"discoverable":false,"Emoji":"apple banana cherry","indexable":true,"memorial":false,"suspended":false}`),
 		},
 	}
 
