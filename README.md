@@ -1,6 +1,6 @@
 # go-act
 
-Package **act** provides an implementation of the ActivityPub and ActivityStreams protocols, as they are use on the Fediverse, for the Go programming language.
+Package **act** provides an implementation of the ActivityPub and ActivityStreams protocols, as they are used on the Fediverse, for the Go programming language.
 
 ## Documention
 
