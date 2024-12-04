@@ -13,7 +13,7 @@ import (
 
 func TestToot_MarshalJSONLD(t *testing.T) {
 
-	var context string =
+	const context string =
 	`"@context":{`+
 		`"toot":"http://joinmastodon.org/ns#"`+
 		`,`+
