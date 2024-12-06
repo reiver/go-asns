@@ -1,6 +1,6 @@
 module github.com/reiver/go-act
 
-go 1.22.4
+go 1.23.4
 
 require (
 	github.com/reiver/go-opt v0.0.0-20240809035328-1ff08dec9bc4
