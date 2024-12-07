@@ -19,6 +19,8 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 			`,`+
 			`"alsoKnownAs":"as:alsoKnownAs"`+
 			`,`+
+			`"id":"as:id"`+
+			`,`+
 			`"image":"as:image"`+
 			`,`+
 			`"icon":"as:icon"`+
