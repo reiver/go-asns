@@ -17,6 +17,8 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 		`"@context":{`+
 			`"as":"https://www.w3.org/ns/activitystreams"`+
 			`,`+
+			`"alsoKnownAs":"as:alsoKnownAs"`+
+			`,`+
 			`"icon":"as:icon"`+
 			`,`+
 			`"name":"as:name"`+
@@ -41,13 +43,58 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 		// 1
 		{
 			Value: as.Object{
+				AlsoKnownAs: nil,
+			},
+			Expected: []byte(`{`+context+`}`),
+		},
+		// 2
+		{
+			Value: as.Object{
+				AlsoKnownAs: []string{},
+			},
+			Expected: []byte(`{`+context+`}`),
+		},
+		// 3
+		{
+			Value: as.Object{
+				AlsoKnownAs: []string{"once"},
+			},
+			Expected: []byte(`{`+context+`,"alsoKnownAs":["once"]}`),
+		},
+		// 4
+		{
+			Value: as.Object{
+				AlsoKnownAs: []string{"once","twice"},
+			},
+			Expected: []byte(`{`+context+`,"alsoKnownAs":["once","twice"]}`),
+		},
+		// 5
+		{
+			Value: as.Object{
+				AlsoKnownAs: []string{"once","twice","thrice"},
+			},
+			Expected: []byte(`{`+context+`,"alsoKnownAs":["once","twice","thrice"]}`),
+		},
+		// 6
+		{
+			Value: as.Object{
+				AlsoKnownAs: []string{"once","twice","thrice","fource"},
+			},
+			Expected: []byte(`{`+context+`,"alsoKnownAs":["once","twice","thrice","fource"]}`),
+		},
+
+
+
+		// 7
+		{
+			Value: as.Object{
 				Icon: opt.Something(as.Icon{
 					URL: opt.Something("http://example.com/img/icon.png"),
 				}),
 			},
 			Expected: []byte(`{`+context+`,"icon":{"url":"http://example.com/img/icon.png"}}`),
 		},
-		// 2
+		// 8
 		{
 			Value: as.Object{
 				Icon: opt.Something(as.Icon{
@@ -60,21 +107,21 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 			},
 			Expected: []byte(`{`+context+`,"icon":{"height":123,"name":"apple banana cherry","type":"image/png","url":"http://example.com/img/icon.png","width":456}}`),
 		},
-		// 3
+		// 9
 		{
 			Value: as.Object{
 				Name: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"name":"apple banana cherry"}`),
 		},
-		// 4
+		// 10
 		{
 			Value: as.Object{
 				Summary: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"summary":"apple banana cherry"}`),
 		},
-		// 5
+		// 11
 		{
 			Value: as.Object{
 				URL: opt.Something("apple banana cherry"),
@@ -84,7 +131,7 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 
 
 
-		// 6
+		// 12
 		{
 			Value: as.Object{
 				Icon: opt.Something(as.Icon{
@@ -106,7 +153,7 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 
 
 
-		// 7
+		// 13
 		{
 			Value: as.Object{
 				Name:    opt.Something("apple"),
@@ -115,7 +162,7 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 			},
 			Expected: []byte(`{`+context+`,"name":"apple","summary":"banana","url":"cherry"}`),
 		},
-		// 8
+		// 14
 		{
 			Value: as.Object{
 				Icon: opt.Something(as.Icon{

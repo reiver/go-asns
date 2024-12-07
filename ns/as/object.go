@@ -47,8 +47,9 @@ type Object struct {
 	NameSpace jsonld.NameSpace `jsonld:"https://www.w3.org/ns/activitystreams"`
 	Prefix    jsonld.Prefix    `jsonld:"as"`
 
-	Icon	opt.Optional[Icon]   `json:"icon,omitempty"`
-	Name    opt.Optional[string] `json:"name,omitempty"`
-	Summary opt.Optional[string] `json:"summary,omitempty"`
-	URL     opt.Optional[string] `json:"url,omitempty"`
+	AlsoKnownAs []string             `json:"alsoKnownAs,omitempty"`
+	Icon	    opt.Optional[Icon]   `json:"icon,omitempty"`
+	Name        opt.Optional[string] `json:"name,omitempty"`
+	Summary     opt.Optional[string] `json:"summary,omitempty"`
+	URL         opt.Optional[string] `json:"url,omitempty"`
 }
