@@ -48,8 +48,8 @@ type Object struct {
 	Prefix    jsonld.Prefix    `jsonld:"as"`
 
 	AlsoKnownAs []string             `json:"alsoKnownAs,omitempty"`
-	Image	    opt.Optional[Image]  `json:"image,omitempty"`
-	Icon	    opt.Optional[Icon]   `json:"icon,omitempty"`
+	Image	    Image  `json:"image,omitempty"`
+	Icon	    Icon   `json:"icon,omitempty"`
 	MovedTo     opt.Optional[string] `json:"movedTo,omitempty"`
 	Name        opt.Optional[string] `json:"name,omitempty"`
 	Summary     opt.Optional[string] `json:"summary,omitempty"`

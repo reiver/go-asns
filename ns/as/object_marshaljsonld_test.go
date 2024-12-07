@@ -92,22 +92,22 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 		// 7
 		{
 			Value: as.Object{
-				Icon: opt.Something(as.Icon{
+				Icon: as.Icon{
 					URL: opt.Something("http://example.com/img/icon.png"),
-				}),
+				},
 			},
 			Expected: []byte(`{`+context+`,"icon":{"url":"http://example.com/img/icon.png"}}`),
 		},
 		// 8
 		{
 			Value: as.Object{
-				Icon: opt.Something(as.Icon{
+				Icon: as.Icon{
 					Height: opt.Something(uint64(123)),
 					Name: opt.Something("apple banana cherry"),
 					Type: opt.Something("image/png"),
 					URL: opt.Something("http://example.com/img/icon.png"),
 					Width: opt.Something(uint64(456)),
-				}),
+				},
 			},
 			Expected: []byte(`{`+context+`,"icon":{"height":123,"name":"apple banana cherry","type":"image/png","url":"http://example.com/img/icon.png","width":456}}`),
 		},
@@ -145,9 +145,9 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 		// 13
 		{
 			Value: as.Object{
-				Icon: opt.Something(as.Icon{
+				Icon: as.Icon{
 					URL: opt.Something("http://example.com/img/icon.png"),
-				}),
+				},
 				Name: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(
@@ -176,9 +176,9 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 		// 15
 		{
 			Value: as.Object{
-				Icon: opt.Something(as.Icon{
+				Icon: as.Icon{
 					URL: opt.Something("http://example.com/img/icon.png"),
-				}),
+				},
 				Name:    opt.Something("apple"),
 				Summary: opt.Something("banana"),
 				URL:     opt.Something("cherry"),
