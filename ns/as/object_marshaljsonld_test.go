@@ -21,6 +21,8 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 			`,`+
 			`"icon":"as:icon"`+
 			`,`+
+			`"movedTo":"as:movedTo"`+
+			`,`+
 			`"name":"as:name"`+
 			`,`+
 			`"summary":"as:summary"`+
@@ -110,18 +112,25 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 		// 9
 		{
 			Value: as.Object{
+				MovedTo: opt.Something("apple banana cherry"),
+			},
+			Expected: []byte(`{`+context+`,"movedTo":"apple banana cherry"}`),
+		},
+		// 10
+		{
+			Value: as.Object{
 				Name: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"name":"apple banana cherry"}`),
 		},
-		// 10
+		// 11
 		{
 			Value: as.Object{
 				Summary: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"summary":"apple banana cherry"}`),
 		},
-		// 11
+		// 12
 		{
 			Value: as.Object{
 				URL: opt.Something("apple banana cherry"),
@@ -131,7 +140,7 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 
 
 
-		// 12
+		// 13
 		{
 			Value: as.Object{
 				Icon: opt.Something(as.Icon{
@@ -153,7 +162,7 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 
 
 
-		// 13
+		// 14
 		{
 			Value: as.Object{
 				Name:    opt.Something("apple"),
@@ -162,7 +171,7 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 			},
 			Expected: []byte(`{`+context+`,"name":"apple","summary":"banana","url":"cherry"}`),
 		},
-		// 14
+		// 15
 		{
 			Value: as.Object{
 				Icon: opt.Something(as.Icon{
