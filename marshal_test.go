@@ -9,6 +9,7 @@ import (
 
 	"github.com/reiver/go-act"
 	"github.com/reiver/go-act/ns/ap"
+	"github.com/reiver/go-act/ns/toot"
 )
 
 func TestMarshal(t *testing.T) {
@@ -46,6 +47,31 @@ func TestMarshal(t *testing.T) {
 				},
 			},
 			Expected: []byte(`{"inbox":"http://social.example/~me/inbox","outbox":"http://social.example/~me/outbox","preferredUsername":"joeblow"}`),
+		},
+
+
+
+		{
+			Values: []any{
+				ap.Actor{
+					Inbox:  opt.Something("http://social.example/~me/inbox"),
+					Outbox: opt.Something("http://social.example/~me/outbox"),
+					PreferredUserName: opt.Something("joeblow"),
+				},
+				toot.Toot{},
+			},
+			Expected: []byte(
+				`{`+
+					`"@context":{`+
+						`"toot":"http://joinmastodon.org/ns#","attributionDomains":"toot:attributionDomains","blurhash":"toot:blurhash","discoverable":"toot:discoverable","Emoji":"toot:Emoji","featured":"toot:featured","featuredTags":"toot:featuredTags","focalPoint":"toot:focalPoint","IdentityProof":"toot:IdentityProof","indexable":"toot:indexable","memorial":"toot:memorial","votersCount":"toot:votersCount","suspended":"toot:suspended"`+
+					`}`+
+					`,`+
+					`"inbox":"http://social.example/~me/inbox"`+
+					`,`+
+					`"outbox":"http://social.example/~me/outbox"`+
+					`,`+
+					`"preferredUsername":"joeblow"`+
+				`}`),
 		},
 	}
 
