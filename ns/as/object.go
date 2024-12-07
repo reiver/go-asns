@@ -49,9 +49,11 @@ type Object struct {
 
 	AlsoKnownAs []string             `json:"alsoKnownAs,omitempty"`
 	Attachment  []Attachment         `json:"attachment,omitempty"`
+	Content     opt.Optional[string] `json:"content,omitempty"`
 	ID          opt.Optional[string] `json:"id,omitempty"`
 	Image	    Image                `json:"image,omitempty"`
 	Icon	    Icon                 `json:"icon,omitempty"`
+	MediaType   opt.Optional[string] `json:"mediaType,omitempty"`
 	MovedTo     opt.Optional[string] `json:"movedTo,omitempty"`
 	Name        opt.Optional[string] `json:"name,omitempty"`
 	Summary     opt.Optional[string] `json:"summary,omitempty"`

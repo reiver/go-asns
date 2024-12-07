@@ -21,11 +21,15 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 			`,`+
 			`"attachment":"as:attachment"`+
 			`,`+
+			`"content":"as:content"`+
+			`,`+
 			`"id":"as:id"`+
 			`,`+
 			`"image":"as:image"`+
 			`,`+
 			`"icon":"as:icon"`+
+			`,`+
+			`"mediaType":"as:mediaType"`+
 			`,`+
 			`"movedTo":"as:movedTo"`+
 			`,`+
