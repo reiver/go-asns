@@ -9,6 +9,7 @@ import (
 
 	"github.com/reiver/go-act"
 	"github.com/reiver/go-act/ns/ap"
+	"github.com/reiver/go-act/ns/sec1"
 	"github.com/reiver/go-act/ns/toot"
 )
 
@@ -71,6 +72,120 @@ func TestMarshal(t *testing.T) {
 					`"outbox":"http://social.example/~me/outbox"`+
 					`,`+
 					`"preferredUsername":"joeblow"`+
+				`}`),
+		},
+		{
+			Values: []any{
+				ap.Actor{
+					Inbox:  opt.Something("http://social.example/~me/inbox"),
+					Outbox: opt.Something("http://social.example/~me/outbox"),
+					PreferredUserName: opt.Something("joeblow"),
+				},
+				toot.Toot{
+					Discoverable: opt.Something(true),
+					Indexable:    opt.Something(true),
+				},
+			},
+			Expected: []byte(
+				`{`+
+					`"@context":{`+
+						`"toot":"http://joinmastodon.org/ns#","attributionDomains":"toot:attributionDomains","blurhash":"toot:blurhash","discoverable":"toot:discoverable","Emoji":"toot:Emoji","featured":"toot:featured","featuredTags":"toot:featuredTags","focalPoint":"toot:focalPoint","IdentityProof":"toot:IdentityProof","indexable":"toot:indexable","memorial":"toot:memorial","votersCount":"toot:votersCount","suspended":"toot:suspended"`+
+					`}`+
+					`,`+
+					`"inbox":"http://social.example/~me/inbox"`+
+					`,`+
+					`"outbox":"http://social.example/~me/outbox"`+
+					`,`+
+					`"preferredUsername":"joeblow"`+
+					`,`+
+					`"discoverable":true`+
+					`,`+
+					`"indexable":true`+
+				`}`),
+		},
+
+
+
+		{
+			Values: []any{
+				ap.Actor{
+					Inbox:  opt.Something("http://social.example/~me/inbox"),
+					Outbox: opt.Something("http://social.example/~me/outbox"),
+					PreferredUserName: opt.Something("joeblow"),
+				},
+				toot.Toot{
+					Discoverable: opt.Something(true),
+					Indexable:    opt.Something(true),
+				},
+				sec1.Security{},
+			},
+			Expected: []byte(
+				`{`+
+					`"@context":[`+
+						`"https://w3id.org/security/v1"`+
+						`,`+
+						`{`+
+							`"toot":"http://joinmastodon.org/ns#","attributionDomains":"toot:attributionDomains","blurhash":"toot:blurhash","discoverable":"toot:discoverable","Emoji":"toot:Emoji","featured":"toot:featured","featuredTags":"toot:featuredTags","focalPoint":"toot:focalPoint","IdentityProof":"toot:IdentityProof","indexable":"toot:indexable","memorial":"toot:memorial","votersCount":"toot:votersCount","suspended":"toot:suspended"`+
+						`}`+
+					`]`+
+					`,`+
+					`"inbox":"http://social.example/~me/inbox"`+
+					`,`+
+					`"outbox":"http://social.example/~me/outbox"`+
+					`,`+
+					`"preferredUsername":"joeblow"`+
+					`,`+
+					`"discoverable":true`+
+					`,`+
+					`"indexable":true`+
+				`}`),
+		},
+		{
+			Values: []any{
+				ap.Actor{
+					Inbox:  opt.Something("http://social.example/~me/inbox"),
+					Outbox: opt.Something("http://social.example/~me/outbox"),
+					PreferredUserName: opt.Something("joeblow"),
+				},
+				toot.Toot{
+					Discoverable: opt.Something(true),
+					Indexable:    opt.Something(true),
+				},
+				sec1.Security{
+					PublicKey: opt.Something(sec1.PublicKey{
+						ID: opt.Something("http://social.example/~me#main-key"),
+						Owner: opt.Something("http://social.example/~me"),
+						PublicKeyPem: opt.Something("-----BEGIN PUBLIC KEY-----\nblah blah blah\n-----END PUBLIC KEY-----\n"),
+					}),
+				},
+			},
+			Expected: []byte(
+				`{`+
+					`"@context":[`+
+						`"https://w3id.org/security/v1"`+
+						`,`+
+						`{`+
+							`"toot":"http://joinmastodon.org/ns#","attributionDomains":"toot:attributionDomains","blurhash":"toot:blurhash","discoverable":"toot:discoverable","Emoji":"toot:Emoji","featured":"toot:featured","featuredTags":"toot:featuredTags","focalPoint":"toot:focalPoint","IdentityProof":"toot:IdentityProof","indexable":"toot:indexable","memorial":"toot:memorial","votersCount":"toot:votersCount","suspended":"toot:suspended"`+
+						`}`+
+					`]`+
+					`,`+
+					`"inbox":"http://social.example/~me/inbox"`+
+					`,`+
+					`"outbox":"http://social.example/~me/outbox"`+
+					`,`+
+					`"preferredUsername":"joeblow"`+
+					`,`+
+					`"discoverable":true`+
+					`,`+
+					`"indexable":true`+
+					`,`+
+					`"publicKey":{`+
+						`"id":"http://social.example/~me#main-key"`+
+						`,`+
+						`"owner":"http://social.example/~me"`+
+						`,`+
+						`"publicKeyPem":"-----BEGIN PUBLIC KEY-----\nblah blah blah\n-----END PUBLIC KEY-----\n"`+
+					`}`+
 				`}`),
 		},
 	}
