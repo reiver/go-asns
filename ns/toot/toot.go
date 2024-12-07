@@ -10,17 +10,16 @@ type Toot struct {
 	NameSpace jsonld.NameSpace `jsonld:"http://joinmastodon.org/ns#"`
 	Prefix    jsonld.Prefix    `jsonld:"toot"`
 
-
-	AttributionDomains opt.Optional[string] `jsonld:"attributionDomains,omitempty"`
-	BlurHash           opt.Optional[string] `jsonld:"blurhash,omitempty"`
-	Discoverable       opt.Optional[bool]   `jsonld:"discoverable,omitempty"`
-	Emoji              opt.Optional[string] `jsonld:"Emoji,omitempty"`
-	Featured           opt.Optional[bool]   `jsonld:"featured,omitempty"`
-	FeaturedTags     []string               `jsonld:"featuredTags,omitempty"`
-	FocalPoint       []any                  `jsonld:"focalPoint,omitempty"`
-	IdentityProof      opt.Optional[string] `jsonld:"IdentityProof,omitempty"`
-	Indexable          opt.Optional[bool]   `jsonld:"indexable,omitempty"`
-	Memorial           opt.Optional[bool]   `jsonld:"memorial,omitempty"`
-	VotersCount        opt.Optional[string] `jsonld:"votersCount,omitempty"`
-	Suspended          opt.Optional[bool]   `jsonld:"suspended,omitempty"`
+	AttributionDomains opt.Optional[string] `json:"attributionDomains,omitempty"`
+	BlurHash           opt.Optional[string] `json:"blurhash,omitempty"`
+	Discoverable       opt.Optional[bool]   `json:"discoverable,omitempty"`
+	Emoji              opt.Optional[string] `json:"Emoji,omitempty"`
+	Featured           opt.Optional[bool]   `json:"featured,omitempty"`
+	FeaturedTags     []string               `json:"featuredTags,omitempty"`
+	FocalPoint       []any                  `json:"focalPoint,omitempty"`
+	IdentityProof      opt.Optional[string] `json:"IdentityProof,omitempty"`
+	Indexable          opt.Optional[bool]   `json:"indexable,omitempty"`
+	Memorial           opt.Optional[bool]   `json:"memorial,omitempty"`
+	VotersCount        opt.Optional[string] `json:"votersCount,omitempty"`
+	Suspended          opt.Optional[bool]   `json:"suspended,omitempty"`
 }
