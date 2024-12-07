@@ -41,9 +41,9 @@ import (
 //	
 //	bytes, err := jsonld.Marshal(activitypub, toot)
 type Actor struct {
-	EndPoints                  opt.Optional[string] `jsonld:"endpoints,omitempty"`
-	Following                  opt.Optional[string] `jsonld:"following,omitempty"`
-	Followers                  opt.Optional[string] `jsonld:"followers,omitempty"`
+	EndPoints                  opt.Optional[string] `json:"endpoints,omitempty"`
+	Following                  opt.Optional[string] `json:"following,omitempty"`
+	Followers                  opt.Optional[string] `json:"followers,omitempty"`
 
 	// inbox
 	//
@@ -54,13 +54,13 @@ type Actor struct {
 	// (2) https://www.w3.org/TR/activitystreams-vocabulary/#dfn-orderedcollection
 	//
 	// (3) https://www.w3.org/TR/activitypub/#inbox
-	Inbox                      opt.Optional[string] `jsonld:"inbox,omitempty"`
+	Inbox                      opt.Optional[string] `json:"inbox,omitempty"`
 
-	Liked                      opt.Optional[string] `jsonld:"liked,omitempty"`
-	Shares                     opt.Optional[string] `jsonld:"shares,omitempty"`
-	Likes                      opt.Optional[string] `jsonld:"likes,omitempty"`
-	OauthAuthorizationEndPoint opt.Optional[string] `jsonld:"oauthAuthorizationEndpoint,omitempty"`
-	OauthTokenEndPoint         opt.Optional[string] `jsonld:"oauthTokenEndpoint,omitempty"`
+	Liked                      opt.Optional[string] `json:"liked,omitempty"`
+	Shares                     opt.Optional[string] `json:"shares,omitempty"`
+	Likes                      opt.Optional[string] `json:"likes,omitempty"`
+	OauthAuthorizationEndPoint opt.Optional[string] `json:"oauthAuthorizationEndpoint,omitempty"`
+	OauthTokenEndPoint         opt.Optional[string] `json:"oauthTokenEndpoint,omitempty"`
 
 	// outbox
 	//
@@ -71,15 +71,15 @@ type Actor struct {
 	// (2) https://www.w3.org/TR/activitystreams-vocabulary/#dfn-orderedcollection
 	//
 	// (3) https://www.w3.org/TR/activitypub/#outbox
-	Outbox                     opt.Optional[string] `jsonld:"outbox,omitempty"`
+	Outbox                     opt.Optional[string] `json:"outbox,omitempty"`
 
 	// preferredUsername
 	//
 	// A short username which may be used to refer to the actor, with no uniqueness guarantees.
-	PreferredUserName          opt.Optional[string] `jsonld:"preferredUsername,omitempty"`
+	PreferredUserName          opt.Optional[string] `json:"preferredUsername,omitempty"`
 
-	ProvideClientKey           opt.Optional[string] `jsonld:"provideClientKey,omitempty"`
-	ProxyURL                   opt.Optional[string] `jsonld:"proxyUrl,omitempty"`
+	ProvideClientKey           opt.Optional[string] `json:"provideClientKey,omitempty"`
+	ProxyURL                   opt.Optional[string] `json:"proxyUrl,omitempty"`
 
 	// sharedInbox
 	//
@@ -89,10 +89,10 @@ type Actor struct {
 	// (1) https://www.w3.org/TR/activitypub/#shared-inbox-delivery
 	//
 	// (2) https://www.w3.org/TR/activitypub/#public-addressing
-	SharedInbox                opt.Optional[string] `jsonld:"sharedInbox,omitempty"`
+	SharedInbox                opt.Optional[string] `json:"sharedInbox,omitempty"`
 
-	SignClientKey              opt.Optional[string] `jsonld:"signClientKey,omitempty"`
-	Source                     opt.Optional[string] `jsonld:"source,omitempty"`
-	Streams                    opt.Optional[string] `jsonld:"streams,omitempty"`
-	UploadMedia                opt.Optional[string] `jsonld:"uploadMedia,omitempty"`
+	SignClientKey              opt.Optional[string] `json:"signClientKey,omitempty"`
+	Source                     opt.Optional[string] `json:"source,omitempty"`
+	Streams                    opt.Optional[string] `json:"streams,omitempty"`
+	UploadMedia                opt.Optional[string] `json:"uploadMedia,omitempty"`
 }
