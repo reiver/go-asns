@@ -3,8 +3,8 @@ module github.com/reiver/go-act
 go 1.23.4
 
 require (
-	github.com/reiver/go-json v0.0.0-20241208121129-c7f2281ce045
-	github.com/reiver/go-jsonld v0.0.0-20241208123732-b9d1e5aff89f
+	github.com/reiver/go-json v0.0.0-20241208133429-ccde1c14b8d3
+	github.com/reiver/go-jsonld v0.0.0-20241208133644-d5bde4e1e862
 	github.com/reiver/go-opt v0.0.0-20240809035328-1ff08dec9bc4
 )
 
