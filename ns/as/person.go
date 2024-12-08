@@ -1,6 +1,8 @@
 package as
 
 import (
+	"reflect"
+
 	"github.com/reiver/go-opt"
 	"github.com/reiver/go-json"
 	"github.com/reiver/go-jsonld"
@@ -23,4 +25,9 @@ type Person struct {
 	Tag         []HashTag            `json:"tag,omitempty"`            // https://www.w3.org/ns/activitystreams#tag
 	Type          json.Const[string] `json:"type" json.value:"Person"`
 	URL         opt.Optional[string] `json:"url,omitempty"`            // https://www.w3.org/ns/activitystreams#url
+}
+
+func (receiver Person) IsEmpty() bool {
+	var nada Person
+	return reflect.DeepEqual(nada, receiver)
 }
