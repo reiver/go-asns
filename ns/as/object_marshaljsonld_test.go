@@ -37,6 +37,8 @@ func TestObject_MarshalJSONLD(t *testing.T) {
 			`,`+
 			`"summary":"as:summary"`+
 			`,`+
+			`"tag":"as:tag"`+
+			`,`+
 			`"url":"as:url"`+
 		`}`
 

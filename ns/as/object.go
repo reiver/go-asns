@@ -57,5 +57,6 @@ type Object struct {
 	MovedTo     opt.Optional[string] `json:"movedTo,omitempty"`
 	Name        opt.Optional[string] `json:"name,omitempty"`
 	Summary     opt.Optional[string] `json:"summary,omitempty"`
+	Tag         []HashTag            `json:"tag,omitempty"`
 	URL         opt.Optional[string] `json:"url,omitempty"`
 }
