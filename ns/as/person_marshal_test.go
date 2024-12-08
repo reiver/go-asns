@@ -11,7 +11,7 @@ import (
 	"github.com/reiver/go-act/ns/as"
 )
 
-func TestPerson_Marshal(t *testing.T) {
+func TestPerson_marshal(t *testing.T) {
 
 	const context string =
 		`"@context":{`+
@@ -106,20 +106,20 @@ func TestPerson_Marshal(t *testing.T) {
 					URL: opt.Something("http://example.com/img/icon.png"),
 				},
 			},
-			Expected: []byte(`{`+context+`,"icon":{"url":"http://example.com/img/icon.png"},"type":"Person"}`),
+			Expected: []byte(`{`+context+`,"icon":{"type":"Image","url":"http://example.com/img/icon.png"},"type":"Person"}`),
 		},
 		// 8
 		{
 			Value: as.Person{
 				Icon: as.Icon{
 					Height: opt.Something(uint64(123)),
+					MediaType: opt.Something("image/png"),
 					Name: opt.Something("apple banana cherry"),
-					Type: opt.Something("image/png"),
 					URL: opt.Something("http://example.com/img/icon.png"),
 					Width: opt.Something(uint64(456)),
 				},
 			},
-			Expected: []byte(`{`+context+`,"icon":{"height":123,"name":"apple banana cherry","type":"image/png","url":"http://example.com/img/icon.png","width":456},"type":"Person"}`),
+			Expected: []byte(`{`+context+`,"icon":{"height":123,"mediaType":"image/png","name":"apple banana cherry","type":"Image","url":"http://example.com/img/icon.png","width":456},"type":"Person"}`),
 		},
 		// 9
 		{
@@ -165,6 +165,8 @@ func TestPerson_Marshal(t *testing.T) {
 					context+
 					`,`+
 					`"icon":{`+
+						`"type":"Image"`+
+						`,`+
 						`"url":"http://example.com/img/icon.png"`+
 					`}`+
 					`,`+
@@ -195,7 +197,7 @@ func TestPerson_Marshal(t *testing.T) {
 				Summary: opt.Something("banana"),
 				URL:     opt.Something("cherry"),
 			},
-			Expected: []byte(`{`+context+`,"icon":{"url":"http://example.com/img/icon.png"},"name":"apple","summary":"banana","type":"Person","url":"cherry"}`),
+			Expected: []byte(`{`+context+`,"icon":{"type":"Image","url":"http://example.com/img/icon.png"},"name":"apple","summary":"banana","type":"Person","url":"cherry"}`),
 		},
 	}
 
@@ -213,7 +215,7 @@ func TestPerson_Marshal(t *testing.T) {
 			expected := test.Expected
 
 			if !bytes.Equal(expected, actual) {
-				t.Errorf("For test #%d, the actual marshaled-jsonld it not what was expected.", testNumber)
+				t.Errorf("For test #%d, the actual marshaled it not what was expected.", testNumber)
 				t.Logf("EXPECTED: (%d)\n%s", len(expected), expected)
 				t.Logf("ACTUAL:   (%d)\n%s", len(actual), actual)
 				t.Logf("VALUE: %#v", test.Value)
