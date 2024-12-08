@@ -2,10 +2,14 @@ package as
 
 import (
 	"github.com/reiver/go-json"
+	"github.com/reiver/go-jsonld"
 	"github.com/reiver/go-opt"
 )
 
 type Link struct {
+	NameSpace jsonld.NameSpace `jsonld:"https://www.w3.org/ns/activitystreams"`
+	Prefix    jsonld.Prefix    `jsonld:"as"`
+
 	Height    opt.Optional[string] `json:"height,omitempty,bare"`
 	HRef      opt.Optional[string] `json:"href,omitempty"`
 	HRefLang  opt.Optional[string] `json:"hreflang,omitempty"`
