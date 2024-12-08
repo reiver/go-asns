@@ -3,6 +3,8 @@ package as
 import (
 	"github.com/reiver/go-json"
 	"github.com/reiver/go-opt"
+
+	"reflect"
 )
 
 type Image struct {
@@ -17,4 +19,9 @@ type Image struct {
 	Updated   opt.Optional[string]   `json:"updated,omitempty"`
 	URL       opt.Optional[string]   `json:"url,omitempty"`
 	Width     opt.Optional[uint64]   `json:"width,omitempty"`
+}
+
+func (receiver Image) IsEmpty() bool {
+	var nada Image
+	return reflect.DeepEqual(nada, receiver)
 }
