@@ -12,7 +12,7 @@ type Person struct {
 	Prefix    jsonld.Prefix    `jsonld:"as"`
 
 	AlsoKnownAs []string             `json:"alsoKnownAs,omitempty"`
-	Attachment  []Attachment         `json:"attachment,omitempty"`     // https://www.w3.org/ns/activitystreams#attachment
+	Attachments []Attachment         `json:"attachment,omitempty"`     // https://www.w3.org/ns/activitystreams#attachment
 	ID          opt.Optional[string] `json:"id,omitempty"`
 	Image	    Image                `json:"image,omitempty"`          // https://www.w3.org/ns/activitystreams#image
 	Icon	    Icon                 `json:"icon,omitempty"`           // https://www.w3.org/ns/activitystreams#icon
