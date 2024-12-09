@@ -58,5 +58,6 @@ type Object struct {
 	Name        opt.Optional[string] `json:"name,omitempty"`
 	Summary     opt.Optional[string] `json:"summary,omitempty"`
 	Tag         []HashTag            `json:"tag,omitempty"`
+	Type        opt.Optional[string] `json:"type,omitempty"`
 	URL         opt.Optional[string] `json:"url,omitempty"`
 }
