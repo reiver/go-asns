@@ -5,6 +5,7 @@ import (
 
 	"bytes"
 
+	"github.com/reiver/go-jsonpp"
 	"github.com/reiver/go-opt"
 
 	"github.com/reiver/go-act"
@@ -21,11 +22,19 @@ func TestPerson_marshal(t *testing.T) {
 			`,`+
 			`"attachment":"as:attachment"`+
 			`,`+
+			`"audience":"as:audience"`+
+			`,`+
+			`"generator":"as:generator"`+
+			`,`+
+			`"height":"as:height"`+
+			`,`+
+			`"icon":"as:icon"`+
+			`,`+
 			`"id":"as:id"`+
 			`,`+
 			`"image":"as:image"`+
 			`,`+
-			`"icon":"as:icon"`+
+			`"location":"as:location"`+
 			`,`+
 			`"mediaType":"as:mediaType"`+
 			`,`+
@@ -33,13 +42,19 @@ func TestPerson_marshal(t *testing.T) {
 			`,`+
 			`"name":"as:name"`+
 			`,`+
+			`"published":"as:published"`+
+			`,`+
 			`"summary":"as:summary"`+
 			`,`+
 			`"tag":"as:tag"`+
 			`,`+
 			`"type":"as:type"`+
 			`,`+
+			`"updated":"as:updated"`+
+			`,`+
 			`"url":"as:url"`+
+			`,`+
+			`"width":"as:width"`+
 		`}`
 
 	tests := []struct{
@@ -216,6 +231,8 @@ func TestPerson_marshal(t *testing.T) {
 
 			if !bytes.Equal(expected, actual) {
 				t.Errorf("For test #%d, the actual marshaled it not what was expected.", testNumber)
+				t.Logf("EXPECTED: (%d)\n%s", len(expected), jsonpp.SPrettyPrint(expected))
+				t.Logf("ACTUAL:   (%d)\n%s", len(actual), jsonpp.SPrettyPrint(actual))
 				t.Logf("EXPECTED: (%d)\n%s", len(expected), expected)
 				t.Logf("ACTUAL:   (%d)\n%s", len(actual), actual)
 				t.Logf("VALUE: %#v", test.Value)
