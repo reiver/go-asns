@@ -1,3 +1,3 @@
-package as
+package act
 
 type Icon = Image

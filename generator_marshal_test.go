@@ -1,4 +1,4 @@
-package as_test
+package act_test
 
 import (
 	"testing"
@@ -8,13 +8,12 @@ import (
 	"github.com/reiver/go-opt"
 
 	"github.com/reiver/go-act"
-	"github.com/reiver/go-act/ns/as"
 )
 
 func TestGenerator_marshal(t *testing.T) {
 
 	tests := []struct{
-		Value as.Generator
+		Value act.Generator
 		Expected []byte
 	}{
 		{
@@ -24,19 +23,19 @@ func TestGenerator_marshal(t *testing.T) {
 
 
 		{
-			Value: as.Generator{
+			Value: act.Generator{
 				Name: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"name":"apple banana cherry"}`),
 		},
 		{
-			Value: as.Generator{
+			Value: act.Generator{
 				Type: opt.Something("bot"),
 			},
 			Expected: []byte(`{"type":"bot"}`),
 		},
 		{
-			Value: as.Generator{
+			Value: act.Generator{
 				URL:  opt.Something("http://example.com/basket-bot.html"),
 			},
 			Expected: []byte(`{"url":"http://example.com/basket-bot.html"}`),
@@ -45,21 +44,21 @@ func TestGenerator_marshal(t *testing.T) {
 
 
 		{
-			Value: as.Generator{
+			Value: act.Generator{
 				Type: opt.Something("bot"),
 				URL:  opt.Something("http://example.com/basket-bot.html"),
 			},
 			Expected: []byte(`{"type":"bot","url":"http://example.com/basket-bot.html"}`),
 		},
 		{
-			Value: as.Generator{
+			Value: act.Generator{
 				Name: opt.Something("apple banana cherry"),
 				URL:  opt.Something("http://example.com/basket-bot.html"),
 			},
 			Expected: []byte(`{"name":"apple banana cherry","url":"http://example.com/basket-bot.html"}`),
 		},
 		{
-			Value: as.Generator{
+			Value: act.Generator{
 				Name: opt.Something("apple banana cherry"),
 				Type: opt.Something("bot"),
 			},
@@ -69,7 +68,7 @@ func TestGenerator_marshal(t *testing.T) {
 
 
 		{
-			Value: as.Generator{
+			Value: act.Generator{
 				Name: opt.Something("apple banana cherry"),
 				Type: opt.Something("bot"),
 				URL:  opt.Something("http://example.com/basket-bot.html"),

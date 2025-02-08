@@ -1,4 +1,4 @@
-package as_test
+package act_test
 
 import (
 	"testing"
@@ -9,7 +9,6 @@ import (
 	"github.com/reiver/go-opt"
 
 	"github.com/reiver/go-act"
-	"github.com/reiver/go-act/ns/as"
 )
 
 func TestPerson_marshal(t *testing.T) {
@@ -58,12 +57,12 @@ func TestPerson_marshal(t *testing.T) {
 		`}`
 
 	tests := []struct{
-		Value as.Person
+		Value act.Person
 		Expected []byte
 	}{
 		// 0
 		{
-			Value: as.Person{},
+			Value: act.Person{},
 			Expected: []byte(`{`+context+`,"type":"Person"}`),
 		},
 
@@ -71,42 +70,42 @@ func TestPerson_marshal(t *testing.T) {
 
 		// 1
 		{
-			Value: as.Person{
+			Value: act.Person{
 				AlsoKnownAs: nil,
 			},
 			Expected: []byte(`{`+context+`,"type":"Person"}`),
 		},
 		// 2
 		{
-			Value: as.Person{
+			Value: act.Person{
 				AlsoKnownAs: []string{},
 			},
 			Expected: []byte(`{`+context+`,"type":"Person"}`),
 		},
 		// 3
 		{
-			Value: as.Person{
+			Value: act.Person{
 				AlsoKnownAs: []string{"once"},
 			},
 			Expected: []byte(`{`+context+`,"alsoKnownAs":["once"],"type":"Person"}`),
 		},
 		// 4
 		{
-			Value: as.Person{
+			Value: act.Person{
 				AlsoKnownAs: []string{"once","twice"},
 			},
 			Expected: []byte(`{`+context+`,"alsoKnownAs":["once","twice"],"type":"Person"}`),
 		},
 		// 5
 		{
-			Value: as.Person{
+			Value: act.Person{
 				AlsoKnownAs: []string{"once","twice","thrice"},
 			},
 			Expected: []byte(`{`+context+`,"alsoKnownAs":["once","twice","thrice"],"type":"Person"}`),
 		},
 		// 6
 		{
-			Value: as.Person{
+			Value: act.Person{
 				AlsoKnownAs: []string{"once","twice","thrice","fource"},
 			},
 			Expected: []byte(`{`+context+`,"alsoKnownAs":["once","twice","thrice","fource"],"type":"Person"}`),
@@ -116,8 +115,8 @@ func TestPerson_marshal(t *testing.T) {
 
 		// 7
 		{
-			Value: as.Person{
-				Icon: as.Icon{
+			Value: act.Person{
+				Icon: act.Icon{
 					URL: opt.Something("http://example.com/img/icon.png"),
 				},
 			},
@@ -125,8 +124,8 @@ func TestPerson_marshal(t *testing.T) {
 		},
 		// 8
 		{
-			Value: as.Person{
-				Icon: as.Icon{
+			Value: act.Person{
+				Icon: act.Icon{
 					Height: opt.Something(uint64(123)),
 					MediaType: opt.Something("image/png"),
 					Name: opt.Something("apple banana cherry"),
@@ -138,28 +137,28 @@ func TestPerson_marshal(t *testing.T) {
 		},
 		// 9
 		{
-			Value: as.Person{
+			Value: act.Person{
 				MovedTo: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"movedTo":"apple banana cherry","type":"Person"}`),
 		},
 		// 10
 		{
-			Value: as.Person{
+			Value: act.Person{
 				Name: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"name":"apple banana cherry","type":"Person"}`),
 		},
 		// 11
 		{
-			Value: as.Person{
+			Value: act.Person{
 				Summary: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"summary":"apple banana cherry","type":"Person"}`),
 		},
 		// 12
 		{
-			Value: as.Person{
+			Value: act.Person{
 				URL: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"type":"Person","url":"apple banana cherry"}`),
@@ -169,8 +168,8 @@ func TestPerson_marshal(t *testing.T) {
 
 		// 13
 		{
-			Value: as.Person{
-				Icon: as.Icon{
+			Value: act.Person{
+				Icon: act.Icon{
 					URL: opt.Something("http://example.com/img/icon.png"),
 				},
 				Name: opt.Something("apple banana cherry"),
@@ -195,7 +194,7 @@ func TestPerson_marshal(t *testing.T) {
 
 		// 14
 		{
-			Value: as.Person{
+			Value: act.Person{
 				Name:    opt.Something("apple"),
 				Summary: opt.Something("banana"),
 				URL:     opt.Something("cherry"),
@@ -204,8 +203,8 @@ func TestPerson_marshal(t *testing.T) {
 		},
 		// 15
 		{
-			Value: as.Person{
-				Icon: as.Icon{
+			Value: act.Person{
+				Icon: act.Icon{
 					URL: opt.Something("http://example.com/img/icon.png"),
 				},
 				Name:    opt.Something("apple"),

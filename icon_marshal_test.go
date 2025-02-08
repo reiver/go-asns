@@ -1,4 +1,4 @@
-package as_test
+package act_test
 
 import (
 	"testing"
@@ -8,13 +8,12 @@ import (
 	"github.com/reiver/go-opt"
 
 	"github.com/reiver/go-act"
-	"github.com/reiver/go-act/ns/as"
 )
 
 func TestIcon_marshal(t *testing.T) {
 
 	type Value struct {
-		Icon as.Icon `json:"icon,omitempty"`
+		Icon act.Icon `json:"icon,omitempty"`
 	}
 
 	tests := []struct{
@@ -29,7 +28,7 @@ func TestIcon_marshal(t *testing.T) {
 
 		{
 			Value: Value{
-				Icon: as.Icon{
+				Icon: act.Icon{
 					Height: opt.Something(uint64(123)),
 				},
 			},
@@ -37,7 +36,7 @@ func TestIcon_marshal(t *testing.T) {
 		},
 		{
 			Value: Value{
-				Icon: as.Icon{
+				Icon: act.Icon{
 					Name: opt.Something("apple banana cherry"),
 				},
 			},
@@ -45,7 +44,7 @@ func TestIcon_marshal(t *testing.T) {
 		},
 		{
 			Value: Value{
-				Icon: as.Icon{
+				Icon: act.Icon{
 					MediaType: opt.Something("image/png"),
 				},
 			},
@@ -53,7 +52,7 @@ func TestIcon_marshal(t *testing.T) {
 		},
 		{
 			Value: Value{
-				Icon: as.Icon{
+				Icon: act.Icon{
 					URL: opt.Something("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="),
 				},
 			},
@@ -61,7 +60,7 @@ func TestIcon_marshal(t *testing.T) {
 		},
 		{
 			Value: Value{
-				Icon: as.Icon{
+				Icon: act.Icon{
 					Width: opt.Something(uint64(4567)),
 				},
 			},
@@ -72,7 +71,7 @@ func TestIcon_marshal(t *testing.T) {
 
 		{
 			Value: Value{
-				Icon: as.Icon{
+				Icon: act.Icon{
 					Height: opt.Something(uint64(123)),
 					MediaType: opt.Something("image/png"),
 					Name: opt.Something("apple banana cherry"),
