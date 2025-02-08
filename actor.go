@@ -1,6 +1,7 @@
 package act
 
 import (
+	"github.com/reiver/go-jsonld"
 	"github.com/reiver/go-opt"
 )
 
