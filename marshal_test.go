@@ -8,7 +8,6 @@ import (
 	"github.com/reiver/go-opt"
 
 	"github.com/reiver/go-act"
-	"github.com/reiver/go-act/ns/ap"
 	"github.com/reiver/go-act/ns/sec1"
 	"github.com/reiver/go-act/ns/toot"
 )
@@ -27,13 +26,13 @@ func TestMarshal(t *testing.T) {
 
 		{
 			Values: []any{
-				ap.Actor{},
+				act.Actor{},
 			},
 			Expected: []byte(`{}`),
 		},
 		{
 			Values: []any{
-				ap.Actor{
+				act.Actor{
 					PreferredUserName: opt.Something("joeblow"),
 				},
 			},
@@ -41,7 +40,7 @@ func TestMarshal(t *testing.T) {
 		},
 		{
 			Values: []any{
-				ap.Actor{
+				act.Actor{
 					Inbox:  opt.Something("http://social.example/~me/inbox"),
 					Outbox: opt.Something("http://social.example/~me/outbox"),
 					PreferredUserName: opt.Something("joeblow"),
@@ -54,7 +53,7 @@ func TestMarshal(t *testing.T) {
 
 		{
 			Values: []any{
-				ap.Actor{
+				act.Actor{
 					Inbox:  opt.Something("http://social.example/~me/inbox"),
 					Outbox: opt.Something("http://social.example/~me/outbox"),
 					PreferredUserName: opt.Something("joeblow"),
@@ -76,7 +75,7 @@ func TestMarshal(t *testing.T) {
 		},
 		{
 			Values: []any{
-				ap.Actor{
+				act.Actor{
 					Inbox:  opt.Something("http://social.example/~me/inbox"),
 					Outbox: opt.Something("http://social.example/~me/outbox"),
 					PreferredUserName: opt.Something("joeblow"),
@@ -108,7 +107,7 @@ func TestMarshal(t *testing.T) {
 
 		{
 			Values: []any{
-				ap.Actor{
+				act.Actor{
 					Inbox:  opt.Something("http://social.example/~me/inbox"),
 					Outbox: opt.Something("http://social.example/~me/outbox"),
 					PreferredUserName: opt.Something("joeblow"),
@@ -142,7 +141,7 @@ func TestMarshal(t *testing.T) {
 		},
 		{
 			Values: []any{
-				ap.Actor{
+				act.Actor{
 					Inbox:  opt.Something("http://social.example/~me/inbox"),
 					Outbox: opt.Something("http://social.example/~me/outbox"),
 					PreferredUserName: opt.Something("joeblow"),
