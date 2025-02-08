@@ -41,6 +41,9 @@ import (
 //	
 //	bytes, err := jsonld.Marshal(activitypub, toot)
 type Actor struct {
+	NameSpace jsonld.NameSpace `jsonld:"https://www.w3.org/ns/activitystreams"`
+	Prefix    jsonld.Prefix    `jsonld:"as"`
+
 	EndPoints                  opt.Optional[string] `json:"endpoints,omitempty"`
 	Following                  opt.Optional[string] `json:"following,omitempty"`
 	Followers                  opt.Optional[string] `json:"followers,omitempty"`
