@@ -12,6 +12,33 @@ import (
 
 func TestIcon_marshal(t *testing.T) {
 
+	const context string =
+		`"@context":{`+
+			`"as":"https://www.w3.org/ns/activitystreams"`+
+			`,`+
+			`"audience":"as:audience"`+
+			`,`+
+			`"generator":"as:generator"`+
+			`,`+
+			`"height":"as:height"`+
+			`,`+
+			`"location":"as:location"`+
+			`,`+
+			`"mediaType":"as:mediaType"`+
+			`,`+
+			`"name":"as:name"`+
+			`,`+
+			`"published":"as:published"`+
+			`,`+
+			`"type":"as:type"`+
+			`,`+
+			`"updated":"as:updated"`+
+			`,`+
+			`"url":"as:url"`+
+			`,`+
+			`"width":"as:width"`+
+		`}`
+
 	type Value struct {
 		Icon act.Icon `json:"icon,omitempty"`
 	}
@@ -21,7 +48,8 @@ func TestIcon_marshal(t *testing.T) {
 		Expected []byte
 	}{
 		{
-			Expected: []byte(`{}`),
+//			Expected: []byte(`{}`),
+			Expected: []byte(`{`+context+`,"type":"Image"}`),
 		},
 
 
@@ -32,7 +60,8 @@ func TestIcon_marshal(t *testing.T) {
 					Height: opt.Something(uint64(123)),
 				},
 			},
-			Expected: []byte(`{"icon":{"height":123,"type":"Image"}}`),
+//			Expected: []byte(`{"icon":{"height":123,"type":"Image"}}`),
+			Expected: []byte(`{`+context+`,"icon":{"height":123,"type":"Image"}}`),
 		},
 		{
 			Value: Value{
@@ -40,7 +69,8 @@ func TestIcon_marshal(t *testing.T) {
 					Name: opt.Something("apple banana cherry"),
 				},
 			},
-			Expected: []byte(`{"icon":{"name":"apple banana cherry","type":"Image"}}`),
+//			Expected: []byte(`{"icon":{"name":"apple banana cherry","type":"Image"}}`),
+			Expected: []byte(`{`+context+`,"icon":{"name":"apple banana cherry","type":"Image"}}`),
 		},
 		{
 			Value: Value{
@@ -48,7 +78,8 @@ func TestIcon_marshal(t *testing.T) {
 					MediaType: opt.Something("image/png"),
 				},
 			},
-			Expected: []byte(`{"icon":{"mediaType":"image/png","type":"Image"}}`),
+//			Expected: []byte(`{"icon":{"mediaType":"image/png","type":"Image"}}`),
+			Expected: []byte(`{`+context+`,"icon":{"mediaType":"image/png","type":"Image"}}`),
 		},
 		{
 			Value: Value{
@@ -56,7 +87,8 @@ func TestIcon_marshal(t *testing.T) {
 					URL: opt.Something("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="),
 				},
 			},
-			Expected: []byte(`{"icon":{"type":"Image","url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="}}`),
+//			Expected: []byte(`{"icon":{"type":"Image","url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="}}`),
+			Expected: []byte(`{`+context+`,"icon":{"type":"Image","url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="}}`),
 		},
 		{
 			Value: Value{
@@ -64,7 +96,8 @@ func TestIcon_marshal(t *testing.T) {
 					Width: opt.Something(uint64(4567)),
 				},
 			},
-			Expected: []byte(`{"icon":{"type":"Image","width":4567}}`),
+//			Expected: []byte(`{"icon":{"type":"Image","width":4567}}`),
+			Expected: []byte(`{`+context+`,"icon":{"type":"Image","width":4567}}`),
 		},
 
 
@@ -79,7 +112,8 @@ func TestIcon_marshal(t *testing.T) {
 					Width: opt.Something(uint64(4567)),
 				},
 			},
-			Expected: []byte(`{"icon":{"height":123,"mediaType":"image/png","name":"apple banana cherry","type":"Image","url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==","width":4567}}`),
+//			Expected: []byte(`{"icon":{"height":123,"mediaType":"image/png","name":"apple banana cherry","type":"Image","url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==","width":4567}}`),
+			Expected: []byte(`{`+context+`,"icon":{"height":123,"mediaType":"image/png","name":"apple banana cherry","type":"Image","url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==","width":4567}}`),
 		},
 	}
 
