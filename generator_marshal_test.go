@@ -1,4 +1,4 @@
-package act_test
+package asns_test
 
 import (
 	"testing"
@@ -7,13 +7,13 @@ import (
 
 	"github.com/reiver/go-opt"
 
-	"github.com/reiver/go-act"
+	"github.com/reiver/go-asns"
 )
 
 func TestGenerator_marshal(t *testing.T) {
 
 	tests := []struct{
-		Value act.Generator
+		Value asns.Generator
 		Expected []byte
 	}{
 		{
@@ -23,19 +23,19 @@ func TestGenerator_marshal(t *testing.T) {
 
 
 		{
-			Value: act.Generator{
+			Value: asns.Generator{
 				Name: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"name":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Generator{
+			Value: asns.Generator{
 				Type: opt.Something("bot"),
 			},
 			Expected: []byte(`{"type":"bot"}`),
 		},
 		{
-			Value: act.Generator{
+			Value: asns.Generator{
 				URL:  opt.Something("http://example.com/basket-bot.html"),
 			},
 			Expected: []byte(`{"url":"http://example.com/basket-bot.html"}`),
@@ -44,21 +44,21 @@ func TestGenerator_marshal(t *testing.T) {
 
 
 		{
-			Value: act.Generator{
+			Value: asns.Generator{
 				Type: opt.Something("bot"),
 				URL:  opt.Something("http://example.com/basket-bot.html"),
 			},
 			Expected: []byte(`{"type":"bot","url":"http://example.com/basket-bot.html"}`),
 		},
 		{
-			Value: act.Generator{
+			Value: asns.Generator{
 				Name: opt.Something("apple banana cherry"),
 				URL:  opt.Something("http://example.com/basket-bot.html"),
 			},
 			Expected: []byte(`{"name":"apple banana cherry","url":"http://example.com/basket-bot.html"}`),
 		},
 		{
-			Value: act.Generator{
+			Value: asns.Generator{
 				Name: opt.Something("apple banana cherry"),
 				Type: opt.Something("bot"),
 			},
@@ -68,7 +68,7 @@ func TestGenerator_marshal(t *testing.T) {
 
 
 		{
-			Value: act.Generator{
+			Value: asns.Generator{
 				Name: opt.Something("apple banana cherry"),
 				Type: opt.Something("bot"),
 				URL:  opt.Something("http://example.com/basket-bot.html"),
@@ -79,7 +79,7 @@ func TestGenerator_marshal(t *testing.T) {
 
 	for testNumber, test := range tests {
 
-		actual, err := act.Marshal(test.Value)
+		actual, err := asns.Marshal(test.Value)
 		if nil != err {
 			t.Errorf("For test #%d, did not expect an error but actually got one", testNumber)
 			t.Logf("ERROR: (%T) %s", err, err)

@@ -1,4 +1,4 @@
-module github.com/reiver/go-act
+module github.com/reiver/go-asns
 
 go 1.23.4
 

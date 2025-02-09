@@ -1,4 +1,4 @@
-package act_test
+package asns_test
 
 import (
 	"testing"
@@ -8,120 +8,120 @@ import (
 	"github.com/reiver/go-jsonld"
 	"github.com/reiver/go-opt"
 
-	"github.com/reiver/go-act"
+	"github.com/reiver/go-asns"
 )
 
 func TestActor_MarshalJSONLD(t *testing.T) {
 
 	tests := []struct{
-		Value act.Actor
+		Value asns.Actor
 		Expected []byte
 	}{
 		{
-			Value: act.Actor{},
+			Value: asns.Actor{},
 			Expected: []byte(`{}`),
 		},
 
 
 
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				EndPoints: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"endpoints":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				Following: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"following":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				Followers: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"followers":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				Inbox: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"inbox":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				Liked: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"liked":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				Shares: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"shares":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				OauthAuthorizationEndPoint: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"oauthAuthorizationEndpoint":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				OauthTokenEndPoint: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"oauthTokenEndpoint":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				Outbox: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"outbox":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				PreferredUserName: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"preferredUsername":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				ProvideClientKey: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"provideClientKey":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				ProxyURL: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"proxyUrl":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				SharedInbox: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"sharedInbox":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				SignClientKey: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"signClientKey":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				Source: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"source":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				Streams: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"streams":"apple banana cherry"}`),
 		},
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				UploadMedia: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{"uploadMedia":"apple banana cherry"}`),
@@ -130,7 +130,7 @@ func TestActor_MarshalJSONLD(t *testing.T) {
 
 
 		{
-			Value: act.Actor{
+			Value: asns.Actor{
 				Followers:         opt.Something("https://mastonaut.example/users/joeblow/followers"),
 				Following:         opt.Something("https://mastonaut.example/users/joeblow/following"),
 				Inbox:             opt.Something("https://mastonaut.example/users/joeblow/inbox"),

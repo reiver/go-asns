@@ -1,4 +1,4 @@
-package act_test
+package asns_test
 
 import (
 	"fmt"
@@ -6,11 +6,11 @@ import (
 	"github.com/reiver/go-opt"
 	"github.com/reiver/go-jsonld"
 
-	"github.com/reiver/go-act"
+	"github.com/reiver/go-asns"
 )
 
 func ExampleAnnounce() {
-	var announcement = act.Announce {
+	var announcement = asns.Announce {
 		ID: opt.Something("https://mastodon.social/users/reiver/statuses/113962917187191012/activity"),
 		Actor:     opt.Something("acct:reiver@mastodon.social"),
 		Published: opt.Something("2025-02-07T14:56:43Z"),

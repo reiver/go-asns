@@ -1,4 +1,4 @@
-package act_test
+package asns_test
 
 import (
 	"testing"
@@ -7,7 +7,7 @@ import (
 
 	"github.com/reiver/go-opt"
 
-	"github.com/reiver/go-act"
+	"github.com/reiver/go-asns"
 )
 
 func TestIcon_marshal(t *testing.T) {
@@ -40,7 +40,7 @@ func TestIcon_marshal(t *testing.T) {
 		`}`
 
 	type Value struct {
-		Icon act.Icon `json:"icon,omitempty"`
+		Icon asns.Icon `json:"icon,omitempty"`
 	}
 
 	tests := []struct{
@@ -56,7 +56,7 @@ func TestIcon_marshal(t *testing.T) {
 
 		{
 			Value: Value{
-				Icon: act.Icon{
+				Icon: asns.Icon{
 					Height: opt.Something(uint64(123)),
 				},
 			},
@@ -65,7 +65,7 @@ func TestIcon_marshal(t *testing.T) {
 		},
 		{
 			Value: Value{
-				Icon: act.Icon{
+				Icon: asns.Icon{
 					Name: opt.Something("apple banana cherry"),
 				},
 			},
@@ -74,7 +74,7 @@ func TestIcon_marshal(t *testing.T) {
 		},
 		{
 			Value: Value{
-				Icon: act.Icon{
+				Icon: asns.Icon{
 					MediaType: opt.Something("image/png"),
 				},
 			},
@@ -83,7 +83,7 @@ func TestIcon_marshal(t *testing.T) {
 		},
 		{
 			Value: Value{
-				Icon: act.Icon{
+				Icon: asns.Icon{
 					URL: opt.Something("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="),
 				},
 			},
@@ -92,7 +92,7 @@ func TestIcon_marshal(t *testing.T) {
 		},
 		{
 			Value: Value{
-				Icon: act.Icon{
+				Icon: asns.Icon{
 					Width: opt.Something(uint64(4567)),
 				},
 			},
@@ -104,7 +104,7 @@ func TestIcon_marshal(t *testing.T) {
 
 		{
 			Value: Value{
-				Icon: act.Icon{
+				Icon: asns.Icon{
 					Height: opt.Something(uint64(123)),
 					MediaType: opt.Something("image/png"),
 					Name: opt.Something("apple banana cherry"),
@@ -119,7 +119,7 @@ func TestIcon_marshal(t *testing.T) {
 
 	for testNumber, test := range tests {
 
-		actual, err := act.Marshal(test.Value)
+		actual, err := asns.Marshal(test.Value)
 		if nil != err {
 			t.Errorf("For test #%d, did not expect an error but actually got one.", testNumber)
 			t.Logf("ERROR: (%T) %s", err, err)

@@ -1,4 +1,4 @@
-package act_test
+package asns_test
 
 import (
 	"testing"
@@ -8,7 +8,7 @@ import (
 	"github.com/reiver/go-jsonpp"
 	"github.com/reiver/go-opt"
 
-	"github.com/reiver/go-act"
+	"github.com/reiver/go-asns"
 )
 
 func TestPerson_marshal(t *testing.T) {
@@ -57,12 +57,12 @@ func TestPerson_marshal(t *testing.T) {
 		`}`
 
 	tests := []struct{
-		Value act.Person
+		Value asns.Person
 		Expected []byte
 	}{
 		// 0
 		{
-			Value: act.Person{},
+			Value: asns.Person{},
 			Expected: []byte(`{`+context+`,"type":"Person"}`),
 		},
 
@@ -70,42 +70,42 @@ func TestPerson_marshal(t *testing.T) {
 
 		// 1
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				AlsoKnownAs: nil,
 			},
 			Expected: []byte(`{`+context+`,"type":"Person"}`),
 		},
 		// 2
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				AlsoKnownAs: []string{},
 			},
 			Expected: []byte(`{`+context+`,"type":"Person"}`),
 		},
 		// 3
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				AlsoKnownAs: []string{"once"},
 			},
 			Expected: []byte(`{`+context+`,"alsoKnownAs":["once"],"type":"Person"}`),
 		},
 		// 4
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				AlsoKnownAs: []string{"once","twice"},
 			},
 			Expected: []byte(`{`+context+`,"alsoKnownAs":["once","twice"],"type":"Person"}`),
 		},
 		// 5
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				AlsoKnownAs: []string{"once","twice","thrice"},
 			},
 			Expected: []byte(`{`+context+`,"alsoKnownAs":["once","twice","thrice"],"type":"Person"}`),
 		},
 		// 6
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				AlsoKnownAs: []string{"once","twice","thrice","fource"},
 			},
 			Expected: []byte(`{`+context+`,"alsoKnownAs":["once","twice","thrice","fource"],"type":"Person"}`),
@@ -115,8 +115,8 @@ func TestPerson_marshal(t *testing.T) {
 
 		// 7
 		{
-			Value: act.Person{
-				Icon: act.Icon{
+			Value: asns.Person{
+				Icon: asns.Icon{
 					URL: opt.Something("http://example.com/img/icon.png"),
 				},
 			},
@@ -124,8 +124,8 @@ func TestPerson_marshal(t *testing.T) {
 		},
 		// 8
 		{
-			Value: act.Person{
-				Icon: act.Icon{
+			Value: asns.Person{
+				Icon: asns.Icon{
 					Height: opt.Something(uint64(123)),
 					MediaType: opt.Something("image/png"),
 					Name: opt.Something("apple banana cherry"),
@@ -137,28 +137,28 @@ func TestPerson_marshal(t *testing.T) {
 		},
 		// 9
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				MovedTo: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"movedTo":"apple banana cherry","type":"Person"}`),
 		},
 		// 10
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				Name: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"name":"apple banana cherry","type":"Person"}`),
 		},
 		// 11
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				Summary: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"summary":"apple banana cherry","type":"Person"}`),
 		},
 		// 12
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				URL: opt.Something("apple banana cherry"),
 			},
 			Expected: []byte(`{`+context+`,"type":"Person","url":"apple banana cherry"}`),
@@ -168,8 +168,8 @@ func TestPerson_marshal(t *testing.T) {
 
 		// 13
 		{
-			Value: act.Person{
-				Icon: act.Icon{
+			Value: asns.Person{
+				Icon: asns.Icon{
 					URL: opt.Something("http://example.com/img/icon.png"),
 				},
 				Name: opt.Something("apple banana cherry"),
@@ -194,7 +194,7 @@ func TestPerson_marshal(t *testing.T) {
 
 		// 14
 		{
-			Value: act.Person{
+			Value: asns.Person{
 				Name:    opt.Something("apple"),
 				Summary: opt.Something("banana"),
 				URL:     opt.Something("cherry"),
@@ -203,8 +203,8 @@ func TestPerson_marshal(t *testing.T) {
 		},
 		// 15
 		{
-			Value: act.Person{
-				Icon: act.Icon{
+			Value: asns.Person{
+				Icon: asns.Icon{
 					URL: opt.Something("http://example.com/img/icon.png"),
 				},
 				Name:    opt.Something("apple"),
@@ -217,7 +217,7 @@ func TestPerson_marshal(t *testing.T) {
 
 	for testNumber, test := range tests {
 
-		actual, err := act.Marshal(test.Value)
+		actual, err := asns.Marshal(test.Value)
 		if nil != err {
 			t.Errorf("For test #%d, did not expect an error but actually got one.", testNumber)
 			t.Logf("ERROR: (%T) %s", err, err)

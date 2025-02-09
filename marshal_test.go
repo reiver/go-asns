@@ -1,4 +1,4 @@
-package act_test
+package asns_test
 
 import (
 	"testing"
@@ -7,9 +7,9 @@ import (
 
 	"github.com/reiver/go-opt"
 
-	"github.com/reiver/go-act"
-	"github.com/reiver/go-act/ns/sec1"
-	"github.com/reiver/go-act/ns/toot"
+	"github.com/reiver/go-asns"
+	"github.com/reiver/go-asns/ns/sec1"
+	toot "github.com/reiver/go-tootns"
 )
 
 func TestMarshal(t *testing.T) {
@@ -26,13 +26,13 @@ func TestMarshal(t *testing.T) {
 
 		{
 			Values: []any{
-				act.Actor{},
+				asns.Actor{},
 			},
 			Expected: []byte(`{}`),
 		},
 		{
 			Values: []any{
-				act.Actor{
+				asns.Actor{
 					PreferredUserName: opt.Something("joeblow"),
 				},
 			},
@@ -40,7 +40,7 @@ func TestMarshal(t *testing.T) {
 		},
 		{
 			Values: []any{
-				act.Actor{
+				asns.Actor{
 					Inbox:  opt.Something("http://social.example/~me/inbox"),
 					Outbox: opt.Something("http://social.example/~me/outbox"),
 					PreferredUserName: opt.Something("joeblow"),
@@ -53,7 +53,7 @@ func TestMarshal(t *testing.T) {
 
 		{
 			Values: []any{
-				act.Actor{
+				asns.Actor{
 					Inbox:  opt.Something("http://social.example/~me/inbox"),
 					Outbox: opt.Something("http://social.example/~me/outbox"),
 					PreferredUserName: opt.Something("joeblow"),
@@ -75,7 +75,7 @@ func TestMarshal(t *testing.T) {
 		},
 		{
 			Values: []any{
-				act.Actor{
+				asns.Actor{
 					Inbox:  opt.Something("http://social.example/~me/inbox"),
 					Outbox: opt.Something("http://social.example/~me/outbox"),
 					PreferredUserName: opt.Something("joeblow"),
@@ -107,7 +107,7 @@ func TestMarshal(t *testing.T) {
 
 		{
 			Values: []any{
-				act.Actor{
+				asns.Actor{
 					Inbox:  opt.Something("http://social.example/~me/inbox"),
 					Outbox: opt.Something("http://social.example/~me/outbox"),
 					PreferredUserName: opt.Something("joeblow"),
@@ -141,7 +141,7 @@ func TestMarshal(t *testing.T) {
 		},
 		{
 			Values: []any{
-				act.Actor{
+				asns.Actor{
 					Inbox:  opt.Something("http://social.example/~me/inbox"),
 					Outbox: opt.Something("http://social.example/~me/outbox"),
 					PreferredUserName: opt.Something("joeblow"),
@@ -191,7 +191,7 @@ func TestMarshal(t *testing.T) {
 
 	for testNumber, test := range tests {
 
-		actual, err := act.Marshal(test.Values...)
+		actual, err := asns.Marshal(test.Values...)
 		if nil != err {
 			t.Errorf("For test #%d, did not expect an erorr but actually got one.", testNumber)
 			t.Logf("ERROR: (%T) %s", err, err)
