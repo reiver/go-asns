@@ -13,13 +13,13 @@ import (
 // Example usage:
 //
 //	import (
-//		"github.com/reiver/go-act/ns/as"
+//		"github.com/reiver/go-asns"
 //		"github.com/reiver/go-jsonld"
 //	)
 //	
 //	// ...
 //	
-//	var object as.Object
+//	var object asns.Object
 //	
 //	// ...
 //	
@@ -28,21 +28,20 @@ import (
 // More likely you would mix this with other JSON-LD name-spaces, with code similar to the following:
 //
 //	import (
-//		"github.com/reiver/go-act/ns/ap"
-//		"github.com/reiver/go-act/ns/as"
-//		"github.com/reiver/go-act/ns/toot"
+//		"github.com/reiver/go-asns"
+//		"github.com/reiver/go-tootns"
 //		"github.com/reiver/go-jsonld"
 //	)
 //	
 //	// ...
 //	
-//	var actor ap.Actor
-//	var object as.Object
-//	var toot toot.Toot
+//	var actor asns.Actor
+//	var object asns.Object
+//	var toot tootns.Toot
 //	
 //	// ...
 //	
-//	bytes, err := jsonld.Marshal(activitypub, object, toot)
+//	bytes, err := jsonld.Marshal(actor, object, toot)
 type Object struct {
 	NameSpace jsonld.NameSpace `jsonld:"https://www.w3.org/ns/activitystreams"`
 	Prefix    jsonld.Prefix    `jsonld:"as"`
