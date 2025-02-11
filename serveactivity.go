@@ -32,6 +32,7 @@ func ServeActivity(responseWriter http.ResponseWriter, request *http.Request, ac
 		header.Add("Cache-Control", "max-age=907")
 		header.Add("Content-Digest", cacheDigest)
 		header.Add("Content-Type", ContentTypeActivity)
+		header.Add("Vary", "Accept")
 	}
 
 	var eTag string
