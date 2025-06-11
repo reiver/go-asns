@@ -10,7 +10,7 @@ type Announce struct {
 	NameSpace jsonld.NameSpace `jsonld:"https://www.w3.org/ns/activitystreams"`
 	Prefix    jsonld.Prefix    `jsonld:"as"`
 
-	Actor       opt.Optional[string] `json:"actor,omitempty"`
+	Actor       jsonld.Strings       `json:"actor,omitempty"`
 	AlsoKnownAs []string             `json:"alsoKnownAs,omitempty"`
 	Attachment  []Attachment         `json:"attachment,omitempty"`
 	Content     opt.Optional[string] `json:"content,omitempty"`
